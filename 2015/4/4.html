@@ -8,7 +8,7 @@
             let counter = 0, hash
             while (true) {
                 hash = CryptoJS.MD5("ckczppom" + counter).toString()
-                if (/^(000000)/.test(hash)) break
+                if (/^(0{6})/.test(hash)) break
                 counter++
             }
             console.log(counter)
