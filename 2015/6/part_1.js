@@ -13,6 +13,24 @@ for (let character of input) {
     }
 }
 
-for (instruction of instructions)
+let lightsOn = []
+let coordinate1, coordinate2
 
-console.log(instructions)
+for (instruction of instructions) {
+    coordinate2 = instruction.split(" ")[instruction.split(" ").length - 1].split(",")
+    if (instruction[6] == "n" || instruction[6] == "f")
+        coordinate1 = instruction.split(" ")[2].split(",")
+    else
+        coordinate1 = instruction.split(" ")[1].split(",")
+
+    for (let x1 = coordinate1[0]; x1 <= coordinate2[0]; x1++) {
+        for (let y1 = coordinate1[1]; y1 <= coordinate2[1]; y1++) {
+            if (lightsOn.indexOf(`${x1}, ${y1}`) != -1 && (instruction[6] == "f" || instruction[1] == "o"))
+                lightsOn.splice(lightsOn.indexOf(`${x1}, ${y1}`), 1)
+            else if (lightsOn.indexOf(`${x1}, ${y1}`) == -1 && (instruction[6] == "n" || instruction[2] == "o"))
+                lightsOn.push( `${x1}, ${y1}`)
+        }
+    }
+}
+
+console.log(lightsOn.length)
