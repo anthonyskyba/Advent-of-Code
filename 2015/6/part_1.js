@@ -16,7 +16,7 @@ for (let character of input) {
 let lightsOn = []
 let coordinate1, coordinate2
 
-for (instruction of instructions) {
+for (let instruction of instructions) {
     coordinate2 = instruction.split(" ")[instruction.split(" ").length - 1].split(",")
     if (instruction[6] == "n" || instruction[6] == "f")
         coordinate1 = instruction.split(" ")[2].split(",")
