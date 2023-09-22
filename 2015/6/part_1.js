@@ -13,24 +13,29 @@ for (let character of input) {
     }
 }
 
-let lightsOn = []
+let lightsOn = new Set()
 let coordinate1, coordinate2
 
 for (let instruction of instructions) {
-    coordinate2 = instruction.split(" ")[instruction.split(" ").length - 1].split(",")
-    if (instruction[6] == "n" || instruction[6] == "f")
-        coordinate1 = instruction.split(" ")[2].split(",")
-    else
-        coordinate1 = instruction.split(" ")[1].split(",")
+    const split = instruction.split(" ")
+    coordinate2 = split[split.length - 1].split(",")
 
-    for (let x1 = coordinate1[0]; x1 <= coordinate2[0]; x1++) {
-        for (let y1 = coordinate1[1]; y1 <= coordinate2[1]; y1++) {
-            if (lightsOn.indexOf(`${x1}, ${y1}`) != -1 && (instruction[6] == "f" || instruction[1] == "o"))
-                lightsOn.splice(lightsOn.indexOf(`${x1}, ${y1}`), 1)
-            else if (lightsOn.indexOf(`${x1}, ${y1}`) == -1 && (instruction[6] == "n" || instruction[2] == "o"))
-                lightsOn.push( `${x1}, ${y1}`)
+    if (split[1] == "on" || split[1] == "off")
+        coordinate1 = split[2].split(",")
+    else
+        coordinate1 = split[1].split(",")
+
+    for (let x1 = Number(coordinate1[0]); x1 <= Number(coordinate2[0]); x1++) {
+        for (let y1 = Number(coordinate1[1]); y1 <= Number(coordinate2[1]); y1++) {
+            if (lightsOn.has(`${x1}, ${y1}`) && (split[1] == "off" || split[0] == "toggle"))
+                lightsOn.delete(`${x1}, ${y1}`) 
+            else if (!lightsOn.has(`${x1}, ${y1}`) && (split[1] == "on" || split[0] == "toggle"))
+                lightsOn.add(`${x1}, ${y1}`)
         }
     }
 }
 
-console.log(lightsOn.length)
+console.log(lightsOn.size)
+
+// answer > 286225
+// answer < 381332
