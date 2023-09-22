@@ -24,13 +24,11 @@ function constructCircuit(kitInstructions) {
     loop: for (const instruction of kitInstructions) {
         const split = instruction.split(" ")
         
-
         if (split.length == 5) {
             value1 = split[0]
             value2 = split[2]
             operator = split[1]
             answer = split[4]
-
 
             if (!isNaN(value1)) value1 = Number(value1)
             else if (solvedVariables[value1] != undefined) value1 = solvedVariables[value1]
@@ -65,7 +63,6 @@ function constructCircuit(kitInstructions) {
         if (split.length == 3) {
             value1 = split[0]
             answer = split[2]
-
 
             if (!isNaN(value1)) value1 = Number(value1)
             else if (solvedVariables[value1] != undefined) value1 = solvedVariables[value1]
