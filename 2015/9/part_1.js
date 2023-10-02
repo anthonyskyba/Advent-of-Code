@@ -21,8 +21,26 @@ let breakLoop = false
 for (let distance of inputArray)
     distances[distance.split(" ")[0] + distance.split(" ")[2]] = Number(distance.split(" ")[4])
 
+function twoLocations(location1, location2) {
+    return [[location1, location2], [location2, location1]]
+}
+
+function threeLocations(location1, location2, location3) {
+    for (let location of [location1, location2, location3]) {
+        let locations = [location1, location2, location3]
+        locations.splice(locations.indexOf(location), 1)
+        uniquePaths.push(...[location].concat(twoLocations(locations[0], locations[1])))
+    }
+    return uniquePaths
+}
+
+console.log(threeLocations("a", "b", "c"))
+
+/* Some other stuff that I tried:
+
 
 function possibleOutcomes(allValues) {
+    if (z == 6) return 1
     if (allValues.length == 2)
         return [allValues[0] + " " + allValues[1], allValues[1] + " " + allValues[0]]
 
@@ -31,6 +49,7 @@ function possibleOutcomes(allValues) {
         let allValues2 = allValues.concat()
         allValues2.splice(allValues.indexOf(value), 1)
         let recursionValues = possibleOutcomes(allValues2)
+        console.log(recursionValues)
 
         for (let i = 0; i < recursionValues.length; i++) {
             uniquePaths.push(value + " " + recursionValues[i])
@@ -43,8 +62,6 @@ console.log(possibleOutcomes(locations))
 
 // console.log(locations)
 
-
-/* Some other stuff that I tried:
 
 for (let index1 of locations) {
     let locations2 = locations.slice(locations.indexOf(index1) + 1)
