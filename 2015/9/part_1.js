@@ -18,8 +18,45 @@ let locations = ["AlphaCentauri", "Snowdin", "Tambi", "Faerun", "Norrath", "Stra
 let uniquePaths = []
 let breakLoop = false
 
-for (let distance of inputArray)
+for (let distance of inputArray) {
     distances[distance.split(" ")[0] + distance.split(" ")[2]] = Number(distance.split(" ")[4])
+    distances[distance.split(" ")[2] + distance.split(" ")[0]] = Number(distance.split(" ")[4])
+}
+
+
+function allPossibleOutcomes(...input) {
+    if (input.length == 2) {
+        return [[input[0], input[1]], [input[1], input[0]]]
+    }
+
+    let allPaths = []
+    let values = input.slice(0)
+    for (let value of values) {
+        values = input.slice(0)
+        values.splice(values.indexOf(value), 1)
+
+        let outcomes = allPossibleOutcomes(...values)
+        for (let i = 0; i < outcomes.length; i++) {
+            allPaths.push([value].concat(outcomes[i]))
+        }            
+    }
+    return allPaths
+}
+
+let shortestDistance = 99999999
+let distance = 0
+
+for (let variation of allPossibleOutcomes(...locations)) {
+    for (let i = 1; i < variation.length; i++) {
+        distance += Number(distances[`${String(variation[i - 1]) + String(variation[i])}`])
+    }
+    if (distance < shortestDistance) shortestDistance = distance
+    distance = 0
+}
+
+console.log(shortestDistance)
+
+/* Some other stuff that I tried:
 
 function twoLocations(location1, location2) {
     return [[location1, location2], [location2, location1]]
@@ -29,14 +66,17 @@ function threeLocations(location1, location2, location3) {
     for (let location of [location1, location2, location3]) {
         let locations = [location1, location2, location3]
         locations.splice(locations.indexOf(location), 1)
-        uniquePaths.push(...[location].concat(twoLocations(locations[0], locations[1])))
+        for (let i = 0; i < locations.length; i++)
+            uniquePaths.push(location.concat(twoLocations(...locations)[i]))
     }
+    uniquePaths = uniquePaths.map(a => a.split(",").join(""))
+    uniquePaths = uniquePaths.slice((uniquePaths.length - 1) / 2)
     return uniquePaths
 }
 
+threeLocations("a", "b", "c")
 console.log(threeLocations("a", "b", "c"))
 
-/* Some other stuff that I tried:
 
 
 function possibleOutcomes(allValues) {
