@@ -25,9 +25,8 @@ for (let distance of inputArray) {
 
 
 function allPossibleOutcomes(...input) {
-    if (input.length == 2) {
-        return [[input[0], input[1]], [input[1], input[0]]]
-    }
+    if (input.length == 1)
+        return [[input[0]]
 
     let allPaths = []
     let values = input.slice(0)
