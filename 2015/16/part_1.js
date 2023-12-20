@@ -37,13 +37,14 @@ let incorrectMatches = [];
 
 for (let i = 1; i <= 500; i++) {
     for (let key of Object.keys(neededMatch)) {
-        if ((String(categories[key][i]) !== String(neededMatch[key]) && categories[key][i] !== undefined) && !incorrectMatches.includes(i))
+        if (incorrectMatches.includes(i)) break;
+        if ((Number(categories[key][i]) != neededMatch[key] && categories[key][i] !== undefined))
             incorrectMatches.push(i);
     }
 }
 
 for (let i = 0; i < 498; i++) {
-    if (Number(incorrectMatches[i]) != i + 1) {
+    if (incorrectMatches[i] != i + 1) {
         console.log(i + 1);
         break;
     }
