@@ -42,5 +42,9 @@ for (let i = 1; i <= 500; i++) {
     }
 }
 
-// 40 is missing from incorrectMatches
+for (let i = 0; i < 498; i++) {
+    if (Number(incorrectMatches[i] + 1) != Number(incorrectMatches[i + 1]))
+        console.log(i);
+}
+
 // answer = 40
