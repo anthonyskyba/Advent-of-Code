@@ -43,8 +43,10 @@ for (let i = 1; i <= 500; i++) {
 }
 
 for (let i = 0; i < 498; i++) {
-    if (Number(incorrectMatches[i] + 1) != Number(incorrectMatches[i + 1]))
-        console.log(i);
+    if (Number(incorrectMatches[i]) != i + 1) {
+        console.log(i + 1);
+        break;
+    }
 }
 
 // answer = 40
