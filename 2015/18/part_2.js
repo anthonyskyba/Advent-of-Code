@@ -60,5 +60,3 @@ for (let light of Object.values(lights))
     if (light == "#") lightsOn++;
 
 console.log(lightsOn);
-
-// answer > 833
