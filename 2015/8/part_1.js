@@ -3,7 +3,6 @@ let nonBackSlashed = `"qxfcsmh" "ffsfyxbyuhqkpwatkjgudo" "byc\x9dyxuafof\\\xa6uf
 let charactersInCode = 0
 let charactersInMemory = 0
 
-// I got filtered by .reduce I don't know why it wasn't working
 for (let word of backSlashed.split(" "))
     charactersInCode += word.length
 
