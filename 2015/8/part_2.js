@@ -7,5 +7,3 @@ for (let word of lotsOfBackslashes.split(" ")) {
 }
 
 console.log(charactersInNewCode - 6195)
-// answer > 1950
-// answer < 2548
