@@ -90,3 +90,48 @@ for (let arr of used) {
 }
 
 console.log(currentShortest - 1);
+
+
+
+
+// solution that didn't work but I was trying something new
+// // let rules = "Al => ThF Al => ThRnFAr B => BCa B => TiB B => TiRnFAr Ca => CaCa Ca => PB Ca => PRnFAr Ca => SiRnFYFAr Ca => SiRnMgAr Ca => SiTh F => CaF F => PMg F => SiAl H => CRnAlAr H => CRnFYFYFAr H => CRnFYMgAr H => CRnMgYFAr H => HCa H => NRnFYFAr H => NRnMgAr H => NTh H => OB H => ORnFAr Mg => BF Mg => TiMg N => CRnFAr N => HSi O => CRnFYFAr O => CRnMgAr O => HP O => NRnFAr O => OTi P => CaP P => PTi P => SiRnFAr Si => CaSi Th => ThCa Ti => BP Ti => TiTi e => HF e => NAl e => OMg";
+// // let medicine = "CRnSiRnCaPTiMgYCaPTiRnFArSiThFArCaSiThSiThPBCaCaSiRnSiRnTiTiMgArPBCaPMgYPTiRnFArFArCaSiRnBPMgArPRnCaPTiRnFArCaSiThCaCaFArPBCaCaPTiTiRnFArCaSiRnSiAlYSiThRnFArArCaSiRnBFArCaCaSiRnSiThCaCaCaFYCaPTiBCaSiThCaSiThPMgArSiRnCaPBFYCaCaFArCaCaCaCaSiThCaSiRnPRnFArPBSiThPRnFArSiRnMgArCaFYFArCaSiRnSiAlArTiTiTiTiTiTiTiRnPMgArPTiTiTiBSiRnSiAlArTiTiRnPMgArCaFYBPBPTiRnSiRnMgArSiThCaFArCaSiThFArPRnFArCaSiRnTiBSiThSiRnSiAlYCaFArPRnFArSiThCaFArCaCaSiThCaCaCaSiRnPRnCaFArFYPMgArCaPBCaPBSiRnFYPBCaFArCaSiAl";
+// let rules = "e => H e => O H => HO H => OH O => HH";
+// let medicine = "HOHOHO";
+
+// rules = rules.replace(/\s=>\s/g, "=").split(" ");
+// rulesDict = {};
+
+// for (let rule of rules) {
+//     rule = rule.split("=");
+//     rulesDict[rule[1]] = rule[0];
+// }
+// rules = rulesDict;
+
+// let steps = 0;
+// let char;
+// let tester = 0;
+
+// outer: while (true) {
+//     let smallest = Infinity;
+//     let replacement;
+//     for (let key in rules) {
+
+//         let pos = medicine.indexOf(key);
+//         if (pos == -1) continue;
+        
+//         replacement = rules[key];
+//         if (replacement == "e" && medicine == key) break outer;
+
+//         if (pos < smallest && rules[key] != "e") {
+//             smallest = pos;
+//             char = key;
+//         }
+//     }
+
+//     medicine = medicine.replace(char, replacement);
+//     steps++;
+// }
+
+// console.log(steps + 1);
