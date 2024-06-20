@@ -186,3 +186,85 @@ console.log(currentShortest - 1);
 // }
 
 // console.log(steps)
+
+
+
+
+
+
+
+
+
+
+// Check randomly and mark down which have been explored, if it's a dead end, then backtrack. essentially dfs that checks randomly down to the bottom then works its way back up.
+
+// let rules = "Al => ThF Al => ThRnFAr B => BCa B => TiB B => TiRnFAr Ca => CaCa Ca => PB Ca => PRnFAr Ca => SiRnFYFAr Ca => SiRnMgAr Ca => SiTh F => CaF F => PMg F => SiAl H => CRnAlAr H => CRnFYFYFAr H => CRnFYMgAr H => CRnMgYFAr H => HCa H => NRnFYFAr H => NRnMgAr H => NTh H => OB H => ORnFAr Mg => BF Mg => TiMg N => CRnFAr N => HSi O => CRnFYFAr O => CRnMgAr O => HP O => NRnFAr O => OTi P => CaP P => PTi P => SiRnFAr Si => CaSi Th => ThCa Ti => BP Ti => TiTi e => HF e => NAl e => OMg";
+// let medicine = "CRnSiRnCaPTiMgYCaPTiRnFArSiThFArCaSiThSiThPBCaCaSiRnSiRnTiTiMgArPBCaPMgYPTiRnFArFArCaSiRnBPMgArPRnCaPTiRnFArCaSiThCaCaFArPBCaCaPTiTiRnFArCaSiRnSiAlYSiThRnFArArCaSiRnBFArCaCaSiRnSiThCaCaCaFYCaPTiBCaSiThCaSiThPMgArSiRnCaPBFYCaCaFArCaCaCaCaSiThCaSiRnPRnFArPBSiThPRnFArSiRnMgArCaFYFArCaSiRnSiAlArTiTiTiTiTiTiTiRnPMgArPTiTiTiBSiRnSiAlArTiTiRnPMgArCaFYBPBPTiRnSiRnMgArSiThCaFArCaSiThFArPRnFArCaSiRnTiBSiThSiRnSiAlYCaFArPRnFArSiThCaFArCaCaSiThCaCaCaSiRnPRnCaFArFYPMgArCaPBCaPBSiRnFYPBCaFArCaSiAl";
+// // let rules = "e => H e => O H => HO H => OH O => HH";
+// // let medicine = "HOHOHO";
+
+// rules = rules.replace(/\s=>\s/g, "=").split(" ");
+// let tempDict = {};
+
+// for (let rule of rules) {
+//     rule = rule.split("=");
+//     tempDict[rule[1]] = rule[0];
+//     // if (tempDict[rule[0]] == undefined)
+//     //     tempDict[rule[0]] = [];
+//     // tempDict[rule[0]].push(rule[1]);
+// }
+
+// rules = tempDict;
+
+// let current = "e";
+// let deadEnds = new Set();
+// let path = [current];
+
+// while (current != medicine) {
+//     let potential = [];
+
+//     for (let replacement in rules) {
+//         let match = rules[replacement];
+//         if (current.indexOf(match) != -1) {
+//             potential.push({});
+//             potential[potential.length - 1][match] = replacement;
+//         }
+//     }
+
+//     function update() {       
+//         let randomIndex = Math.floor(Math.random() * potential.length);
+//         let randomDict = potential[randomIndex];
+//         let match = Object.keys(randomDict)[0];
+//         current = current.replace(match, randomDict[match]);
+//         path.push(current);
+
+//         if (current == medicine) return;
+//         if (current.length >= medicine.length) deadEnds.add(current);
+
+//         if (deadEnds.has(current)) {
+//             function reset() {
+//                 path.pop();
+//                 current = path[path.length - 1];
+//             }
+//             reset();
+
+//             if (potential.length == 1) {
+//                 deadEnds.add(current);
+//                 reset();
+//                 return;
+//             }
+            
+//             potential.splice(randomIndex, 1);
+//             update();
+//         }
+//     }
+
+//     update();
+
+//     if (deadEnds.has("e")) {
+//         console.log("impossible path");
+//         break;
+//     }
+// }
+
+// console.log(path.length - 1);
